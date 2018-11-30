@@ -1,21 +1,17 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-		stage('Sonar') {
-            steps {
-                echo 'Running sonar....'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-    }
+node {
+	stage('Build') {
+		echo "${M2_HOME}"
+		sh "mvn install"
+	}
+	stage('Sonar') {
+		steps {
+			echo 'Running sonar....'
+		}
+	}
+	stage('Test') {
+		steps {
+			echo 'Testing..'
+		}
+	}
 }
+
