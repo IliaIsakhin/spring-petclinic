@@ -25,20 +25,11 @@ pipeline {
                                 bat 'mvn package -Dmaven.test.skip=true'
                         }
                 }
-
 	}
 	
 	post {
                 always {
                         junit '**/surefire-reports/*.xml'
-                        echo "${GIT_BRANCH}"
-                        echo "${GIT_URL}"
-                        echo "${GIT_COMMIT}"
-                        echo "${GIT_COMMITTER_EMAIL}"
-                        echo "${GIT_COMMITTER_NAME}"
-                        echo "${GIT_AUTHOR_EMAIL}"
-                        echo "${GIT_AUTHOR_NAME}"   
-                        echo "${GIT_USER}"
                 }
                 success {
                     emailext (
